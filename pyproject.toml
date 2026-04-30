@@ -4,6 +4,7 @@ version = "0.1.0"
 requires-python = ">=3.14"
 dependencies = [
     "langchain[google-genai,ollama]>=1.2.17",
+    "rich>=15.0.0",
 ]
 
 [dependency-groups]
