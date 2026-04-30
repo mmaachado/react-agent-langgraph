@@ -1,0 +1,57 @@
+[project]
+name = "src"
+version = "0.1.0"
+requires-python = ">=3.14"
+dependencies = [
+    "langchain[google-genai,ollama]>=1.2.17",
+]
+
+[dependency-groups]
+dev = [
+    "isort>=8.0.1",
+    "pyright>=1.1.409",
+    "pytest>=9.0.3",
+    "ruff>=0.15.12",
+]
+
+[tool.ruff]
+line-length = 79
+fix = true
+show-fixes = true
+indent-width = 4
+exclude = [".venv"]
+
+[tool.ruff.format]
+quote-style = "single"
+indent-style = "tab"
+
+[tool.pyright]
+typeCheckingMode = "standard"
+pythonVersion = "3.14"
+include = ["src", "tests"]
+exclude = [
+  "**/venv",
+  "**/.venv",
+  "**/env",
+  "**/.env",
+  "**/node_modules",
+  "**/__pycache__",
+]
+venv = ".venv"
+venvPath = "."
+executionEnvironments = [{ root = "src" }]
+
+[tool.pytest.ini_options]
+addopts = "-s --color=yes --tb=short"
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
